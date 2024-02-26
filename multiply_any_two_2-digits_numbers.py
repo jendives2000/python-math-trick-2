@@ -26,3 +26,27 @@
 # print(f"{78 * 79}")
 
 # -----------------------------------------------------------------------------
+
+xy = input("\nEnter the 1st 2-digits number > 9 and < 100: --> ")  # 1.
+ab = input("\nEnter the 2nd 2-digits number > 9 and < 100: --> ")
+
+
+# func to multiply x to a, then add u and list out
+def mult_and_add(x, a, u):
+    x = int(x)
+    a = int(a)
+    u = int(u)
+    mult = (x * a) + u
+    return mult
+
+
+first_number = [mult_and_add(xy[0], ab[0], 0)]  # 1b. + 1c.
+last_number = [mult_and_add(xy[1], ab[1], 0)]  # 1d. + 1e.
+
+step_2 = mult_and_add(xy[0], ab[1], 0)  # 2.
+step_2b = mult_and_add(xy[1], ab[0], 0)  # 2b.
+total_2c = step_2b + step_2  # 2c.
+center_number = [total_2c]  # 2d.
+
+
+print(type(step_2), type(step_2b), type(total_2c), type(center_number), center_number)
