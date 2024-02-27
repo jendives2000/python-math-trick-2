@@ -3,9 +3,9 @@
 
 # 1. Get any two 2-digits numbers from the user. For this breakdown here, we'll use 78 and 79 as examples.
 # 1b. multiply the 7 from 78 to the 7 from 79, giving 49.
-# 1c. store it in a string list: first_number --> [4, 9]
+# 1c. store it in a var: first_number --> [4, 9]
 # 1d. multiply the 8 from 78 to the 9 from 79, giving 72
-# 1e. store it in a string list: last_number --> [7, 2]
+# 1e. store it in a var: last_number --> [7, 2]
 # 2. multiply the 7 from 78 to the 9 from 79, giving 63
 # 2b. multiply the 8 from 78 to the 7 from 79, giving 56
 # 2c. add both results together, 63 + 56 = 119
@@ -27,6 +27,8 @@
 
 # -----------------------------------------------------------------------------
 
+list_f_result = []
+
 xy = input("\nEnter the 1st 2-digits number > 9 and < 100: --> ")  # 1.
 ab = input("\nEnter the 2nd 2-digits number > 9 and < 100: --> ")
 
@@ -40,13 +42,35 @@ def mult_and_add(x, a, u):
     return mult
 
 
-first_number = [mult_and_add(xy[0], ab[0], 0)]  # 1b. + 1c.
-last_number = [mult_and_add(xy[1], ab[1], 0)]  # 1d. + 1e.
+# All vars here are INT
+first_number = mult_and_add(xy[0], ab[0], 0)  # 1b. + 1c.
+last_number = mult_and_add(xy[1], ab[1], 0)  # 1d. + 1e.
 
 step_2 = mult_and_add(xy[0], ab[1], 0)  # 2.
 step_2b = mult_and_add(xy[1], ab[0], 0)  # 2b.
-total_2c = step_2b + step_2  # 2c.
-center_number = [total_2c]  # 2d.
+center_number = step_2b + step_2  # 2c. + 2d.
+
+print(f"Center number = {center_number}")
 
 
-print(type(step_2), type(step_2b), type(total_2c), type(center_number), center_number)
+# function to insert a digit according to the length of its number:
+def insert_last_digit(extract_from_this, insert_to_this):
+    extract_from_this = str(extract_from_this)
+    # index [-1] extracts the last digit, no matter the length of insert_to_this.
+    insert_to_this.insert(0, extract_from_this[-1])
+    return insert_to_this
+
+
+insert_last_digit(last_number, list_f_result)  # 3.
+print(f"Last Number is now: [_, _, _, {list_f_result}]")
+
+# storing the 1st digit of last_number (7 from 72, in 1e.) in var: first_of_lastnumber
+first_of_lastnumber = int(str(last_number)[0])
+last_of_centernumber = int(str(center_number)[-1])
+wz = first_of_lastnumber + last_of_centernumber  # 3b.
+print(f"wz is: {wz}")
+
+
+# list_f_result.append(last_number[2])  # 3.
+
+# print(type(step_2), type(step_2b), type(total_2c), type(center_number), center_number)
