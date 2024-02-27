@@ -45,11 +45,9 @@ def mult_and_add(x, a, u):
 # All vars here are INT
 first_number = mult_and_add(xy[0], ab[0], 0)  # 1b. + 1c.
 last_number = mult_and_add(xy[1], ab[1], 0)  # 1d. + 1e.
-
 step_2 = mult_and_add(xy[0], ab[1], 0)  # 2.
 step_2b = mult_and_add(xy[1], ab[0], 0)  # 2b.
 center_number = step_2b + step_2  # 2c. + 2d.
-
 print(f"Center number = {center_number}")
 
 
@@ -62,15 +60,40 @@ def insert_last_digit(extract_from_this, insert_to_this):
 
 
 insert_last_digit(last_number, list_f_result)  # 3.
-print(f"Last Number is now: [_, _, _, {list_f_result}]")
-
+print(f"Final result is now: [_, _, _, {list_f_result}]")
 # storing the 1st digit of last_number (7 from 72, in 1e.) in var: first_of_lastnumber
 first_of_lastnumber = int(str(last_number)[0])
 last_of_centernumber = int(str(center_number)[-1])
 wz = first_of_lastnumber + last_of_centernumber  # 3b.
 print(f"wz is: {wz}")
 
+if len(str(wz)) == 2:
+    insert_last_digit(wz, list_f_result)  # 3c.
+else:
+    list_f_result.insert(0, str(wz)[0])  # 3c.
+print(f"Final result is now: [_, _, {list_f_result}]")
 
-# list_f_result.append(last_number[2])  # 3.
+if len(str(center_number)) == 3:
+    op = (
+        int(str(center_number)[1]) + int(str(first_number)[1]) + int(str(wz)[0])
+    )  # 3d. 3e.
+else:
+    op = (
+        int(str(center_number)[0]) + int(str(first_number)[0]) + int(str(wz)[0])
+    )  # 3d. 3e.
+print(f"op is: {op}")
 
-# print(type(step_2), type(step_2b), type(total_2c), type(center_number), center_number)
+if len(str(op)) == 2:
+    list_f_result.insert(0, str(op)[1])  # 3f.
+else:
+    list_f_result.insert(0, str(op)[0])  # 3f.
+print(f"Final result is now: [_, {list_f_result}]")
+
+final_1st_digit = (
+    int(str(first_number)[0]) + int(str(op)[0]) + int(str(center_number)[0])
+)  # 3g.
+list_f_result.insert(0, str(final_1st_digit))  # 3h.
+list_f_result = [str(i) for i in list_f_result]  # conversion to a string list
+final_result = "".join(list_f_result)
+
+print(f"\n{xy} x {ab} = {final_result}\n")
