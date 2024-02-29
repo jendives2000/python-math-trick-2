@@ -73,30 +73,28 @@ if len(str(first_number)) == 2 and len(str(last_number)) == 2:
         insert_last_digit(wz, list_f_result)  # 3c.
     else:
         list_f_result.insert(0, str(wz)[0])  # 3c.
-    print(f"Final result is now: [_, _, {list_f_result}]")
+    ###print(f"Final result is now: [_, _, {list_f_result}]")
+
+    def add_int_str_nums(num1, index1, num2, index2, num3, index3):
+        num1 = int(str(num1)[index1])
+        num2 = int(str(num2)[index2])
+        num3 = int(str(num3)[index3])
+        return num1 + num2 + num3
 
     # eg. 87 * 89 for xy and ab
     if len(str(center_number)) == 3 and len(str(wz)) == 2:
-        op = (
-            int(str(center_number)[1]) + int(str(first_number)[1]) + int(str(wz)[0])
-        )  # 3d. 3e.
+        op = add_int_str_nums(center_number, 1, first_number, 1, wz, 0)  # 3d. 3e.
     elif len(str(center_number)) == 3 and len(str(wz)) == 1:
-        op = int(str(center_number)[1]) + int(str(first_number)[1])  # 3d. 3e.
+        op = add_int_str_nums(center_number, 1, first_number, 1)  # 3d. 3e.
     elif len(str(center_number)) == 3:
-        op = (
-            int(str(center_number)[1]) + int(str(first_number)[1]) + int(str(wz)[0])
-        )  # 3d. 3e.
+        op = add_int_str_nums(center_number, 1, first_number, 1, wz, 0)  # 3d. 3e.
     elif len(str(center_number)) == 2 and len(str(wz)) == 1:
-        op = int(str(center_number)[0]) + int(str(first_number)[1])  # 3d. 3e.
+        op = add_int_str_nums(center_number, 0, first_number, 1)  # 3d. 3e.
     elif len(str(center_number)) == 2:
-        op = (
-            int(str(center_number)[0]) + int(str(first_number)[1]) + int(str(wz)[0])
-        )  # 3d. 3e.
+        op = add_int_str_nums(center_number, 0, first_number, 1, wz, 0)  # 3d. 3e.
     else:
-        op = (
-            int(str(center_number)[0]) + int(str(first_number)[0]) + int(str(wz)[0])
-        )  # 3d. 3e.
-    print(f"op is: {op}")
+        op = add_int_str_nums(center_number, 0, first_number, 0, wz, 0)  # 3d. 3e.
+    ###print(f"op is: {op}")
 
     if len(str(op)) == 2:
         list_f_result.insert(0, str(op)[1])  # 3f.
@@ -106,7 +104,7 @@ if len(str(first_number)) == 2 and len(str(last_number)) == 2:
     else:
         list_f_result.insert(0, str(op)[0])  # 3f.
         final_1st_digit = int(str(first_number)[0]) + int(str(center_number)[0])  # 3g.
-    print(f"Final result is now: [_, {list_f_result}]")
+    ###print(f"Final result is now: [_, {list_f_result}]")
 
     if len(str(center_number)) == 2:
         final_1st_digit = int(str(first_number)[0]) + int(str(op)[0])  # 3g.
@@ -122,7 +120,7 @@ if len(str(first_number)) == 2 and len(str(last_number)) == 2:
 elif len(str(first_number)) == 1 and len(str(last_number)) == 2:
     list_f_result.insert(0, str(last_number)[1])  # 3.
     wz = int(str(center_number)[1]) + int(str(last_number)[0])  # 3b.
-    print(f"wz is {wz}")
+    ###print(f"wz is {wz}")
 
     if len(str(wz)) == 1:  # eg. 27 * 29 for xy and ab
         list_f_result.insert(0, str(wz)[0])  # 3c.
@@ -144,4 +142,4 @@ list_f_result = [str(i) for i in list_f_result]  # conversion to a string list
 final_result = "".join(list_f_result)
 print(f"\n{xy} x {ab} = {final_result}\n")
 
-print(f"{int(xy) * int(ab)}")
+###print(f"{int(xy) * int(ab)}")
