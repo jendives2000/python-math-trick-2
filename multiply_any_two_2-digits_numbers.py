@@ -166,5 +166,8 @@ while True:
         ###print(f"{int(xy) * int(ab)}")
 
     else:
-        print("\nExiting...")
+        print(CLEAR)
+        print("\nExiting...\n")
+        time.sleep(1)
+        print(CLEAR)
         quit()
