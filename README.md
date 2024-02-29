@@ -35,7 +35,7 @@ I started to develop a preparation process before starting to code. I make a min
 trying to break down and code. This helps in many ways, first is better learning of the logic, better
 understanding and remembering too. It also serves as a reference if I need a refresher. 
 
-![alt text](image.png)
+![alt text](image-1.png)
 
 I will not describe the logic behind here, I prefer to do it in the main file instead. This way I add
 numbered bullet points that I can then use in the code for better code comprehension. I did this in my
