@@ -98,18 +98,18 @@ if len(str(first_number)) == 2 and len(str(last_number)) == 2:
 
     if len(str(op)) == 2:
         list_f_result.insert(0, str(op)[1])  # 3f.
-        final_1st_digit = (
-            int(str(first_number)[0]) + int(str(center_number)[0]) + int(str(op)[0])
+        final_1st_digit = add_int_str_nums(
+            first_number, 0, center_number, 0, op, 0
         )  # 3g.
     else:
         list_f_result.insert(0, str(op)[0])  # 3f.
-        final_1st_digit = int(str(first_number)[0]) + int(str(center_number)[0])  # 3g.
+        final_1st_digit = add_int_str_nums(first_number, 0, center_number, 0)  # 3g.
     ###print(f"Final result is now: [_, {list_f_result}]")
 
     if len(str(center_number)) == 2:
-        final_1st_digit = int(str(first_number)[0]) + int(str(op)[0])  # 3g.
+        final_1st_digit = add_int_str_nums(first_number, 0, op, 0)  # 3g.
     elif len(str(center_number)) == 1:
-        final_1st_digit = int(str(first_number)[0]) + int(str(center_number)[0])  # 3g.
+        final_1st_digit = add_int_str_nums(first_number, 0, center_number, 0)  # 3g.
 
     list_f_result.insert(0, str(final_1st_digit))  # 3h.
     list_f_result = [str(i) for i in list_f_result]  # conversion to a string list
@@ -119,17 +119,22 @@ if len(str(first_number)) == 2 and len(str(last_number)) == 2:
 
 elif len(str(first_number)) == 1 and len(str(last_number)) == 2:
     list_f_result.insert(0, str(last_number)[1])  # 3.
-    wz = int(str(center_number)[1]) + int(str(last_number)[0])  # 3b.
+    wz = add_int_str_nums(
+        center_number,
+        1,
+        last_number,
+        0,
+    )  # 3b.
     ###print(f"wz is {wz}")
 
     if len(str(wz)) == 1:  # eg. 27 * 29 for xy and ab
         list_f_result.insert(0, str(wz)[0])  # 3c.
-        final_1st_number = int(str(first_number)[0]) + int(str(center_number)[0])  # 3d.
+        final_1st_number = add_int_str_nums(first_number, 0, center_number, 0)  # 3d.
         list_f_result.insert(0, final_1st_number)  # 3h.
     else:  # eg. 37 * 39 for xy and ab
         list_f_result.insert(0, str(wz)[1])  # 3c.
-        final_1st_number = (
-            int(str(first_number)) + int(str(center_number)[0]) + int(str(wz)[0])
+        final_1st_number = add_int_str_nums(
+            first_number, 0, center_number, 0, wz, 0
         )  # 3d.
         list_f_result.insert(0, final_1st_number)  # 3h.
 
