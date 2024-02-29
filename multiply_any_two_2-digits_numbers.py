@@ -31,6 +31,9 @@
 import time
 
 # -----------------------------------------------------------------------------
+
+CLEAR = "\033[H\033[2J"
+
 while True:
 
     choice = input(
@@ -65,11 +68,12 @@ while True:
             return insert_to_this
 
         if len(str(first_num)) == 2 and len(str(last_num)) == 2:
+            print(CLEAR)
 
             insert_last_digit(last_num, list_f_result)  # 3.
             ###print(f"Final result is now: [_, _, _, {list_f_result}]")
-            print(f"Calculating {xy} x {ab}...")
-            time.sleep(1)
+            print(f"\nCalculating {xy} x {ab} = ...")
+            time.sleep(1.5)
             # storing the 1st digit of last_num (7 from 72, in 1e.) in var: first_of_lastnumber
             first_of_lastnumber = int(str(last_num)[0])
             last_of_centernumber = int(str(center_num)[-1])
@@ -127,6 +131,7 @@ while True:
             ###print(f"\n{xy} x {ab} = {final_result}\n")
 
         elif len(str(first_num)) == 1 and len(str(last_num)) == 2:
+            print(CLEAR)
             list_f_result.insert(0, str(last_num)[1])  # 3.
             wz = add_int_str_nums(
                 center_num,
@@ -154,6 +159,7 @@ while True:
 
         list_f_result = [str(i) for i in list_f_result]  # conversion to a string list
         final_result = "".join(list_f_result)
+        print(CLEAR)
         print(f"\n{xy} x {ab} = {final_result}\n")
         time.sleep(1.5)
 
