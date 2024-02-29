@@ -28,11 +28,13 @@
 # print(f"{78 * 79}")
 
 # -----------------------------------------------------------------------------
+import time
 
+# -----------------------------------------------------------------------------
 while True:
 
     choice = input(
-        "\nWould you like to:\n1. Calculate two 2-digits numbers.\n2. Exit.\nPlease enter your choice (1 or 2): --> "
+        "\nWould you like to:\n1. Calculate two 2-digits numbers.\n2. Exit.\n\nPlease enter your choice (1 or 2): --> "
     )
 
     if choice == "1":
@@ -67,6 +69,7 @@ while True:
             insert_last_digit(last_num, list_f_result)  # 3.
             ###print(f"Final result is now: [_, _, _, {list_f_result}]")
             print(f"Calculating {xy} x {ab}...")
+            time.sleep(1)
             # storing the 1st digit of last_num (7 from 72, in 1e.) in var: first_of_lastnumber
             first_of_lastnumber = int(str(last_num)[0])
             last_of_centernumber = int(str(center_num)[-1])
@@ -152,6 +155,7 @@ while True:
         list_f_result = [str(i) for i in list_f_result]  # conversion to a string list
         final_result = "".join(list_f_result)
         print(f"\n{xy} x {ab} = {final_result}\n")
+        time.sleep(1.5)
 
         ###print(f"{int(xy) * int(ab)}")
 
