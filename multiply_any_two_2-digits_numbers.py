@@ -29,118 +29,132 @@
 
 # -----------------------------------------------------------------------------
 
-list_f_result = []
-xy = input("\nEnter the 1st 2-digits number > 9 and < 100: --> ")  # 1.
-ab = input("\nEnter the 2nd 2-digits number > 9 and < 100: --> ")
+while True:
 
+    choice = input(
+        "\nWould you like to:\n1. Calculate two 2-digits numbers.\n2. Exit.\nPlease enter your choice (1 or 2): --> "
+    )
 
-# func to multiply x to a, then add u and list out
-def mult_and_add(x, a):
-    x = int(x)
-    a = int(a)
-    mult = x * a
-    return mult
+    if choice == "1":
+        list_f_result = []
+        xy = input("\nEnter the 1st 2-digits number > 9 and < 100: --> ")  # 1.
+        ab = input("\nEnter the 2nd 2-digits number > 9 and < 100: --> ")
 
+        # func to multiply x to a, then add u and list out
+        def mult_and_add(x, a):
+            x = int(x)
+            a = int(a)
+            mult = x * a
+            return mult
 
-# All vars here are INT
-first_num = mult_and_add(xy[0], ab[0])  # 1b. + 1c.
-last_num = mult_and_add(xy[1], ab[1])  # 1d. + 1e.
-step_2 = mult_and_add(xy[0], ab[1])  # 2.
-step_2b = mult_and_add(xy[1], ab[0])  # 2b.
-center_num = step_2b + step_2  # 2c. + 2d.
-###print(f"Center number = {center_num}")
+        # All vars here are INT
+        first_num = mult_and_add(xy[0], ab[0])  # 1b. + 1c.
+        last_num = mult_and_add(xy[1], ab[1])  # 1d. + 1e.
+        step_2 = mult_and_add(xy[0], ab[1])  # 2.
+        step_2b = mult_and_add(xy[1], ab[0])  # 2b.
+        center_num = step_2b + step_2  # 2c. + 2d.
+        ###print(f"Center number = {center_num}")
 
+        # function to insert a digit to the final result list according to the length of its number:
+        def insert_last_digit(extract_from_this, insert_to_this):
+            extract_from_this = str(extract_from_this)
+            # index [-1] extracts the last digit, no matter the length of insert_to_this.
+            insert_to_this.insert(0, extract_from_this[-1])
+            return insert_to_this
 
-# function to insert a digit to the final result list according to the length of its number:
-def insert_last_digit(extract_from_this, insert_to_this):
-    extract_from_this = str(extract_from_this)
-    # index [-1] extracts the last digit, no matter the length of insert_to_this.
-    insert_to_this.insert(0, extract_from_this[-1])
-    return insert_to_this
+        if len(str(first_num)) == 2 and len(str(last_num)) == 2:
 
+            insert_last_digit(last_num, list_f_result)  # 3.
+            ###print(f"Final result is now: [_, _, _, {list_f_result}]")
+            print(f"Calculating {xy} x {ab}...")
+            # storing the 1st digit of last_num (7 from 72, in 1e.) in var: first_of_lastnumber
+            first_of_lastnumber = int(str(last_num)[0])
+            last_of_centernumber = int(str(center_num)[-1])
+            wz = first_of_lastnumber + last_of_centernumber  # 3b.
+            ###print(f"wz is: {wz}")
 
-if len(str(first_num)) == 2 and len(str(last_num)) == 2:
+            if len(str(wz)) == 2:
+                insert_last_digit(wz, list_f_result)  # 3c.
+            else:
+                list_f_result.insert(0, str(wz)[0])  # 3c.
+            ###print(f"Final result is now: [_, _, {list_f_result}]")
 
-    insert_last_digit(last_num, list_f_result)  # 3.
-    print(f"Final result is now: [_, _, _, {list_f_result}]")
-    # storing the 1st digit of last_num (7 from 72, in 1e.) in var: first_of_lastnumber
-    first_of_lastnumber = int(str(last_num)[0])
-    last_of_centernumber = int(str(center_num)[-1])
-    wz = first_of_lastnumber + last_of_centernumber  # 3b.
-    ###print(f"wz is: {wz}")
+            def add_int_str_nums(num1, index1, num2, index2, num3, index3):
+                num1 = int(str(num1)[index1])
+                num2 = int(str(num2)[index2])
+                num3 = int(str(num3)[index3])
+                return num1 + num2 + num3
 
-    if len(str(wz)) == 2:
-        insert_last_digit(wz, list_f_result)  # 3c.
+            # eg. 87 * 89 for xy and ab
+            if len(str(center_num)) == 3 and len(str(wz)) == 2:
+                op = add_int_str_nums(center_num, 1, first_num, 1, wz, 0)  # 3d. 3e.
+            elif len(str(center_num)) == 3 and len(str(wz)) == 1:
+                op = add_int_str_nums(center_num, 1, first_num, 1)  # 3d. 3e.
+            elif len(str(center_num)) == 3:
+                op = add_int_str_nums(center_num, 1, first_num, 1, wz, 0)  # 3d. 3e.
+            elif len(str(center_num)) == 2 and len(str(wz)) == 1:
+                op = add_int_str_nums(center_num, 0, first_num, 1)  # 3d. 3e.
+            elif len(str(center_num)) == 2:
+                op = add_int_str_nums(center_num, 0, first_num, 1, wz, 0)  # 3d. 3e.
+            else:
+                op = add_int_str_nums(center_num, 0, first_num, 0, wz, 0)  # 3d. 3e.
+            ###print(f"op is: {op}")
+
+            if len(str(op)) == 2:
+                list_f_result.insert(0, str(op)[1])  # 3f.
+                final_1st_digit = add_int_str_nums(
+                    first_num, 0, center_num, 0, op, 0
+                )  # 3g.
+            else:
+                list_f_result.insert(0, str(op)[0])  # 3f.
+                final_1st_digit = add_int_str_nums(first_num, 0, center_num, 0)  # 3g.
+            ###print(f"Final result is now: [_, {list_f_result}]")
+
+            if len(str(center_num)) == 2:
+                final_1st_digit = add_int_str_nums(first_num, 0, op, 0)  # 3g.
+            elif len(str(center_num)) == 1:
+                final_1st_digit = add_int_str_nums(first_num, 0, center_num, 0)  # 3g.
+
+            list_f_result.insert(0, str(final_1st_digit))  # 3h.
+            list_f_result = [
+                str(i) for i in list_f_result
+            ]  # conversion to a string list
+            final_result = "".join(list_f_result)
+
+            ###print(f"\n{xy} x {ab} = {final_result}\n")
+
+        elif len(str(first_num)) == 1 and len(str(last_num)) == 2:
+            list_f_result.insert(0, str(last_num)[1])  # 3.
+            wz = add_int_str_nums(
+                center_num,
+                1,
+                last_num,
+                0,
+            )  # 3b.
+            ###print(f"wz is {wz}")
+
+            if len(str(wz)) == 1:  # eg. 27 * 29 for xy and ab
+                list_f_result.insert(0, str(wz)[0])  # 3c.
+                final_1st_num = add_int_str_nums(first_num, 0, center_num, 0)  # 3d.
+                list_f_result.insert(0, final_1st_num)  # 3h.
+            else:  # eg. 37 * 39 for xy and ab
+                list_f_result.insert(0, str(wz)[1])  # 3c.
+                final_1st_num = add_int_str_nums(
+                    first_num, 0, center_num, 0, wz, 0
+                )  # 3d.
+                list_f_result.insert(0, final_1st_num)  # 3h.
+
+        else:  # eg. 11 * 10 for xy and ab
+            list_f_result.insert(0, last_num)  # 3.
+            list_f_result.insert(0, center_num)  # 3b.
+            list_f_result.insert(0, first_num)  # 3c.
+
+        list_f_result = [str(i) for i in list_f_result]  # conversion to a string list
+        final_result = "".join(list_f_result)
+        print(f"\n{xy} x {ab} = {final_result}\n")
+
+        ###print(f"{int(xy) * int(ab)}")
+
     else:
-        list_f_result.insert(0, str(wz)[0])  # 3c.
-    ###print(f"Final result is now: [_, _, {list_f_result}]")
-
-    def add_int_str_nums(num1, index1, num2, index2, num3, index3):
-        num1 = int(str(num1)[index1])
-        num2 = int(str(num2)[index2])
-        num3 = int(str(num3)[index3])
-        return num1 + num2 + num3
-
-    # eg. 87 * 89 for xy and ab
-    if len(str(center_num)) == 3 and len(str(wz)) == 2:
-        op = add_int_str_nums(center_num, 1, first_num, 1, wz, 0)  # 3d. 3e.
-    elif len(str(center_num)) == 3 and len(str(wz)) == 1:
-        op = add_int_str_nums(center_num, 1, first_num, 1)  # 3d. 3e.
-    elif len(str(center_num)) == 3:
-        op = add_int_str_nums(center_num, 1, first_num, 1, wz, 0)  # 3d. 3e.
-    elif len(str(center_num)) == 2 and len(str(wz)) == 1:
-        op = add_int_str_nums(center_num, 0, first_num, 1)  # 3d. 3e.
-    elif len(str(center_num)) == 2:
-        op = add_int_str_nums(center_num, 0, first_num, 1, wz, 0)  # 3d. 3e.
-    else:
-        op = add_int_str_nums(center_num, 0, first_num, 0, wz, 0)  # 3d. 3e.
-    ###print(f"op is: {op}")
-
-    if len(str(op)) == 2:
-        list_f_result.insert(0, str(op)[1])  # 3f.
-        final_1st_digit = add_int_str_nums(first_num, 0, center_num, 0, op, 0)  # 3g.
-    else:
-        list_f_result.insert(0, str(op)[0])  # 3f.
-        final_1st_digit = add_int_str_nums(first_num, 0, center_num, 0)  # 3g.
-    ###print(f"Final result is now: [_, {list_f_result}]")
-
-    if len(str(center_num)) == 2:
-        final_1st_digit = add_int_str_nums(first_num, 0, op, 0)  # 3g.
-    elif len(str(center_num)) == 1:
-        final_1st_digit = add_int_str_nums(first_num, 0, center_num, 0)  # 3g.
-
-    list_f_result.insert(0, str(final_1st_digit))  # 3h.
-    list_f_result = [str(i) for i in list_f_result]  # conversion to a string list
-    final_result = "".join(list_f_result)
-
-    print(f"\n{xy} x {ab} = {final_result}\n")
-
-elif len(str(first_num)) == 1 and len(str(last_num)) == 2:
-    list_f_result.insert(0, str(last_num)[1])  # 3.
-    wz = add_int_str_nums(
-        center_num,
-        1,
-        last_num,
-        0,
-    )  # 3b.
-    ###print(f"wz is {wz}")
-
-    if len(str(wz)) == 1:  # eg. 27 * 29 for xy and ab
-        list_f_result.insert(0, str(wz)[0])  # 3c.
-        final_1st_num = add_int_str_nums(first_num, 0, center_num, 0)  # 3d.
-        list_f_result.insert(0, final_1st_num)  # 3h.
-    else:  # eg. 37 * 39 for xy and ab
-        list_f_result.insert(0, str(wz)[1])  # 3c.
-        final_1st_num = add_int_str_nums(first_num, 0, center_num, 0, wz, 0)  # 3d.
-        list_f_result.insert(0, final_1st_num)  # 3h.
-
-else:  # eg. 11 * 10 for xy and ab
-    list_f_result.insert(0, last_num)  # 3.
-    list_f_result.insert(0, center_num)  # 3b.
-    list_f_result.insert(0, first_num)  # 3c.
-
-list_f_result = [str(i) for i in list_f_result]  # conversion to a string list
-final_result = "".join(list_f_result)
-print(f"\n{xy} x {ab} = {final_result}\n")
-
-###print(f"{int(xy) * int(ab)}")
+        print("\nExiting...")
+        quit()
