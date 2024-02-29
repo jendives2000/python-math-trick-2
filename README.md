@@ -6,7 +6,7 @@ My second attempt at coding the logic behind a math trick: how to multiply any t
     - [SOURCE](#source)
     - [WHAT IS IT](#what-is-it)
     - [WHY?](#why)
-    - [OPPORTUNITY TO LEARN :smile:](#opportunity-to-learn-smile)
+    - [OPPORTUNITY TO LEARN](#opportunity-to-learn)
     - [VISUALISATION OF THE LOGIC](#visualisation-of-the-logic)
 
 
@@ -36,7 +36,7 @@ once finished was great, so I decided to continue with math tricks.
 
 ****
 
-### OPPORTUNITY TO LEARN :smile:
+### OPPORTUNITY TO LEARN
 
 This is great for me to learn collections manipulation, int/str methods and manipulation, and to practice on basic conditionals and loops.
 
