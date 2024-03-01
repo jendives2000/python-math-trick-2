@@ -58,7 +58,7 @@ while True:
         step_2 = mult_and_add(xy[0], ab[1])  # 2.
         step_2b = mult_and_add(xy[1], ab[0])  # 2b.
         center_num = step_2b + step_2  # 2c. + 2d.
-        print(f"Center number = {center_num}")
+        ###print(f"Center number = {center_num}")
 
         # function to insert a digit to the final result list according to the length of its number:
         def insert_last_digit(extract_from_this, insert_to_this):
@@ -68,24 +68,25 @@ while True:
             return insert_to_this
 
         if len(str(first_num)) == 2 and len(str(last_num)) == 2:
-            ###print(CLEAR)
+            ###
+            print(CLEAR)
 
             insert_last_digit(last_num, list_f_result)  # 3.
-            print(f"Final result is now: [_, _, _, {list_f_result}]")
+            ###print(f"Final result is now: [_, _, _, {list_f_result}]")
             print(f"\nCalculating {xy} x {ab} = ...")
             time.sleep(1.5)
             # storing the 1st digit of last_num (7 from 72, in 1e.) in var: first_of_lastnumber
             first_of_lastnumber = int(str(last_num)[0])
             last_of_centernumber = int(str(center_num)[-1])
             wz = first_of_lastnumber + last_of_centernumber  # 3b.
-            print(f"wz is: {wz}")
+            ###print(f"wz is: {wz}")
 
             if len(str(wz)) == 2:
                 insert_last_digit(wz, list_f_result)  # 3c.
             else:
                 list_f_result.insert(0, str(wz)[0])  # 3c.
 
-            print(f"Final result is now: [_, _, {list_f_result}]")
+            ###print(f"Final result is now: [_, _, {list_f_result}]")
 
             def add_3_int_str_nums(num1, index1, num2, index2, num3, index3):
                 num1 = int(str(num1)[index1])
@@ -113,7 +114,7 @@ while True:
             else:
                 op = add_3_int_str_nums(center_num, 0, first_num, 0, wz, 0)  # 3d. 3e.
 
-            print(f"op is: {op}")
+            ###print(f"op is: {op}")
 
             if len(str(op)) == 2:
                 list_f_result.insert(0, str(op)[1])  # 3f.
@@ -132,7 +133,7 @@ while True:
                     list_f_result.insert(0, (str(sec_dig_final_num)))  # 3f.
                 else:
                     list_f_result.insert(0, str(sec_dig_final_num)[1])  # 3f.
-            print(f"Final result is now: [_, {list_f_result}]")
+            ###print(f"Final result is now: [_, {list_f_result}]")
 
             if len(str(center_num)) == 2 and op == 0:
                 if len(str(sec_dig_final_num)) == 2:
@@ -155,7 +156,8 @@ while True:
             print(f"\n{xy} x {ab} = {final_result}\n")
 
         elif len(str(first_num)) == 1 and len(str(last_num)) == 2:
-            ###print(CLEAR)
+            ###
+            print(CLEAR)
             list_f_result.insert(0, str(last_num)[1])  # 3.
             if len(str(center_num)) == 1:  # eg. 14 * 15 for xy and ab
                 wz = int(str(center_num)[0]) + int(str(last_num)[0])  # 3b.
@@ -163,10 +165,8 @@ while True:
             elif len(str(center_num)) == 2:
                 wz = int(str(center_num)[1]) + int(str(last_num)[0])  # 3b.
 
-            print(
-                f"first_num = {first_num}\nlast_num = {last_num}\ncenter_num = {center_num}\n"
-            )
-            print(f"wz is {wz}")
+            ###print(f"first_num = {first_num}\nlast_num = {last_num}\ncenter_num = {center_num}\n")
+            ###print(f"wz is {wz}")
 
             if len(str(wz)) == 1:  # eg. 27 * 29 for xy and ab
                 list_f_result.insert(0, str(wz)[0])  # 3c.
@@ -182,13 +182,12 @@ while True:
                 list_f_result.insert(0, final_1st_num)  # 3h.
 
         elif len(str(first_num)) == 2 and len(str(last_num)) == 1:
-            ###print(CLEAR)
-            print(
-                f"first_num = {first_num}\nlast_num = {last_num}\ncenter_num = {center_num}\n"
-            )
+            ###
+            print(CLEAR)
+            ###print(f"first_num = {first_num}\nlast_num = {last_num}\ncenter_num = {center_num}\n")
             list_f_result.insert(0, str(last_num))  # 3.
             wz = int(str("0"))
-            print(f"wz is {wz}, there is no wz")
+            ###print(f"wz is {wz}, there is no wz")
             list_f_result.insert(0, str(center_num)[1])  # 3c.
             # sec_dig_final_num = add_2_int_str_nums(first_num, 1, center_num, 0)  # 3f.
             sec_dig_final_num = int(str(first_num)[1]) + int(str(center_num)[0])  # 3f.
@@ -206,9 +205,7 @@ while True:
         elif (
             len(str(first_num)) == 1 and len(str(last_num)) == 1
         ):  # eg. 11 * 10 for xy and ab
-            print(
-                f"first_num = {first_num}\nlast_num = {last_num}\ncenter_num = {center_num}\n"
-            )
+            ###print(f"first_num = {first_num}\nlast_num = {last_num}\ncenter_num = {center_num}\n")
             if len(str(center_num)) == 2:
                 list_f_result.insert(0, last_num)  # 3.
                 list_f_result.insert(0, int(str(center_num)[1]))  # 3b.
@@ -222,15 +219,18 @@ while True:
 
         list_f_result = [str(i) for i in list_f_result]  # conversion to a string list
         final_result = "".join(list_f_result)
-        ###print(CLEAR)
+        ###
+        print(CLEAR)
         print(f"\n{xy} x {ab} = {final_result}\n")
         time.sleep(1.5)
 
-        print(f"{int(xy) * int(ab)}")
+        ###print(f"{int(xy) * int(ab)}")
 
     else:
-        ###print(CLEAR)
+        ###
+        print(CLEAR)
         print("\nExiting...\n")
         time.sleep(1)
-        ###print(CLEAR)
+        ###
+        print(CLEAR)
         quit()
