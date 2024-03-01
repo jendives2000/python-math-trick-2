@@ -157,23 +157,28 @@ while True:
         elif len(str(first_num)) == 1 and len(str(last_num)) == 2:
             ###print(CLEAR)
             list_f_result.insert(0, str(last_num)[1])  # 3.
-            wz = add_2_int_str_nums(
-                center_num,
-                1,
-                last_num,
-                0,
-            )  # 3b.
+            if len(str(center_num)) == 1:  # eg. 14 * 15 for xy and ab
+                wz = int(str(center_num)[0]) + int(str(last_num)[0])  # 3b.
+
+            elif len(str(center_num)) == 2:
+                wz = int(str(center_num)[1]) + int(str(last_num)[0])  # 3b.
+
+            print(
+                f"first_num = {first_num}\nlast_num = {last_num}\ncenter_num = {center_num}\n"
+            )
             print(f"wz is {wz}")
 
             if len(str(wz)) == 1:  # eg. 27 * 29 for xy and ab
                 list_f_result.insert(0, str(wz)[0])  # 3c.
-                final_1st_num = add_2_int_str_nums(first_num, 0, center_num, 0)  # 3d.
+                final_1st_num = int(str(first_num)[0]) + int(str(center_num)[0])  # 3d.
+                # final_1st_num = add_2_int_str_nums(first_num, 0, center_num, 0)  # 3d.
                 list_f_result.insert(0, final_1st_num)  # 3h.
             else:  # eg. 37 * 39 for xy and ab
                 list_f_result.insert(0, str(wz)[1])  # 3c.
-                final_1st_num = add_3_int_str_nums(
-                    first_num, 0, center_num, 0, wz, 0
+                final_1st_num = (
+                    int(str(first_num)[0]) + int(str(center_num)[0]) + int(str(wz)[0])
                 )  # 3d.
+
                 list_f_result.insert(0, final_1st_num)  # 3h.
 
         elif len(str(first_num)) == 2 and len(str(last_num)) == 1:
@@ -187,8 +192,16 @@ while True:
             list_f_result.insert(0, str(center_num)[1])  # 3c.
             # sec_dig_final_num = add_2_int_str_nums(first_num, 1, center_num, 0)  # 3f.
             sec_dig_final_num = int(str(first_num)[1]) + int(str(center_num)[0])  # 3f.
-            list_f_result.insert(0, sec_dig_final_num)
-            list_f_result.insert(0, str(first_num)[0])
+            if len(str(sec_dig_final_num)) == 2:  # eg. 72  * 73 for xy and ab
+                list_f_result.insert(0, str(sec_dig_final_num)[1])  # 3f.
+                first_num = int(str(first_num)[0]) + int(
+                    str(sec_dig_final_num)[0]
+                )  # 3g.
+                list_f_result.insert(0, str(first_num)[0])
+
+            else:
+                list_f_result.insert(0, sec_dig_final_num)
+                list_f_result.insert(0, str(first_num)[0])
 
         elif (
             len(str(first_num)) == 1 and len(str(last_num)) == 1
@@ -199,7 +212,8 @@ while True:
             if len(str(center_num)) == 2:
                 list_f_result.insert(0, last_num)  # 3.
                 list_f_result.insert(0, int(str(center_num)[1]))  # 3b.
-                final_1st_num = add_2_int_str_nums(first_num, 0, center_num, 0)
+                final_1st_num = int(str(first_num)[0]) + int(str(center_num)[0])
+                # final_1st_num = add_2_int_str_nums(first_num, 0, center_num, 0)
                 list_f_result.insert(0, final_1st_num)  # 3c.
             elif len(str(center_num)) == 1:
                 list_f_result.insert(0, last_num)  # 3.
