@@ -46,7 +46,7 @@ while True:
         ab = input("\nEnter the 2nd 2-digits number > 9 and < 100: --> ")
 
         # func to multiply x to a, then add u and list out
-        def mult_and_add(x, a):
+        def mult_and_add(x: str, a: str) -> int:
             x = int(x)
             a = int(a)
             mult = x * a
@@ -61,7 +61,7 @@ while True:
         ###print(f"Center number = {center_num}")
 
         # function to insert a digit to the final result list according to the length of its number:
-        def insert_last_digit(extract_from_this, insert_to_this):
+        def insert_last_digit(extract_from_this: int, insert_to_this: list) -> list:
             extract_from_this = str(extract_from_this)
             # index [-1] extracts the last digit, no matter the length of insert_to_this.
             insert_to_this.insert(0, extract_from_this[-1])
@@ -88,13 +88,17 @@ while True:
 
             ###print(f"Final result is now: [_, _, {list_f_result}]")
 
-            def add_3_int_str_nums(num1, index1, num2, index2, num3, index3):
+            def add_3_int_str_nums(
+                num1: int, index1: int, num2: int, index2: int, num3: int, index3: int
+            ) -> int:
                 num1 = int(str(num1)[index1])
                 num2 = int(str(num2)[index2])
                 num3 = int(str(num3)[index3])
                 return num1 + num2 + num3
 
-            def add_2_int_str_nums(num1, index1, num2, index2):
+            def add_2_int_str_nums(
+                num1: int, index1: int, num2: int, index2: int
+            ) -> int:
                 num1 = int(str(num1)[index1])
                 num2 = int(str(num2)[index2])
                 return num1 + num2
@@ -108,7 +112,6 @@ while True:
                 op = add_3_int_str_nums(center_num, 1, first_num, 1, wz, 0)  # 3d. 3e.
             elif len(str(center_num)) == 2 and len(str(wz)) == 1:
                 op = int(str("0"))
-                # op = add_2_int_str_nums(center_num, 0, first_num, 1)  # 3d. 3e.
             elif len(str(center_num)) == 2:
                 op = add_3_int_str_nums(center_num, 0, first_num, 1, wz, 0)  # 3d. 3e.
             else:
@@ -125,7 +128,6 @@ while True:
                 list_f_result.insert(0, str(op))  # 3f.
                 final_1st_num = add_2_int_str_nums(first_num, 0, center_num, 0)  # 3g.
             else:
-                # final_1st_num = add_2_int_str_nums(first_num, 0, center_num, 0)  # 3g.
                 sec_dig_final_num = add_2_int_str_nums(
                     first_num, 1, center_num, 0
                 )  # 3g.
@@ -171,7 +173,6 @@ while True:
             if len(str(wz)) == 1:  # eg. 27 * 29 for xy and ab
                 list_f_result.insert(0, str(wz)[0])  # 3c.
                 final_1st_num = int(str(first_num)[0]) + int(str(center_num)[0])  # 3d.
-                # final_1st_num = add_2_int_str_nums(first_num, 0, center_num, 0)  # 3d.
                 list_f_result.insert(0, final_1st_num)  # 3h.
             else:  # eg. 37 * 39 for xy and ab
                 list_f_result.insert(0, str(wz)[1])  # 3c.
@@ -189,7 +190,6 @@ while True:
             wz = int(str("0"))
             ###print(f"wz is {wz}, there is no wz")
             list_f_result.insert(0, str(center_num)[1])  # 3c.
-            # sec_dig_final_num = add_2_int_str_nums(first_num, 1, center_num, 0)  # 3f.
             sec_dig_final_num = int(str(first_num)[1]) + int(str(center_num)[0])  # 3f.
             if len(str(sec_dig_final_num)) == 2:  # eg. 72  * 73 for xy and ab
                 list_f_result.insert(0, str(sec_dig_final_num)[1])  # 3f.
@@ -210,7 +210,6 @@ while True:
                 list_f_result.insert(0, last_num)  # 3.
                 list_f_result.insert(0, int(str(center_num)[1]))  # 3b.
                 final_1st_num = int(str(first_num)[0]) + int(str(center_num)[0])
-                # final_1st_num = add_2_int_str_nums(first_num, 0, center_num, 0)
                 list_f_result.insert(0, final_1st_num)  # 3c.
             elif len(str(center_num)) == 1:
                 list_f_result.insert(0, last_num)  # 3.
