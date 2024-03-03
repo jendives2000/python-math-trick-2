@@ -10,6 +10,7 @@
 		"ms-python.python",
 		"ms-python.debugpy",
 		"ericsia.pythonsnippets3pro",
+		"github.vscode-pull-request-github",
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": []
